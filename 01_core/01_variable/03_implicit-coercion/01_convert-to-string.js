@@ -15,6 +15,8 @@ console.log(10 + '20');
 // 표현식의 결과를 문자열로 암묵적 변환
 console.log(`10 + 20 = ${10 + 20}`);
 
+// 문자열 타입이 아닌 값을 암묵적으로 변환하는 결과
+// 빈 문자열을 더하면 문자열로 변환이 된다.
 console.log(NaN + '');
 console.log(Infinity + '');
 console.log(true + '');
