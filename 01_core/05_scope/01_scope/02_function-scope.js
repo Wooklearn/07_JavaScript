@@ -17,4 +17,4 @@ for(var i = 0; i < 10; i++) {
 }
 // 우리가 지금까지 알고 있던 상식으로는 0 이 출력 되는 것이
 // 정상이다.
-console.log(i);
+console.log(i); 
