@@ -8,8 +8,8 @@
 <body>
     <h1>03. 형제 관계 노드 탐색</h1>
     <ol id="node">
-        <li>previousSibling : 형제 중 이전 형제 노드(요소, 텍스트) 탐색</li>
-        <li>nextSibling : 형제 중 자신의 다음 형제 노드(요소, 텍스트) 탐색</li>
+        <li>previousSibling : 형제 중 이전 형제 노드(요소, 텍스트)탐색</li>
+        <li>nextSibling : 형제 중 자신의 다음 형제 노드(요소, 텍스트)탐색</li>
     </ol>
     <script>
         const $node = document.getElementById('node');
@@ -20,6 +20,10 @@
         const {firstChild} = $node;
         console.log(firstChild);
 
+        // int x = 10
+        // int y = x;
+        // $ 암묵적 표현 -> 돔 요소를 취득
+
         const {nextSibling} = firstChild;
         console.log(nextSibling);
 
@@ -27,8 +31,8 @@
         console.log(previousSibling);
 
         // 태그 요소 노드만 취득하고 싶으면
-        // previousElementSiblingㄴ
-        // nextELementSibling 을 사용하면 된다.
+        // previousElementSibling
+        // nextElementSibling 을 사용하면 된다.
     </script>
 </body>
 </html>
