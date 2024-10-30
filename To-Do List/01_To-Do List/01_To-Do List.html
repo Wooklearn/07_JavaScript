@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        .h1 {
+            text-align: center;
+
+        }
+
+        .header {
+            height: 100px;
+            width: 1000px;
+            line-height: 100px;
+            font-size: 25px;
+            color: rgb(2, 94, 17);
+            background-color: greenyellow;
+            text-align: center;
+            font-family: arial;
+        }
+
+        .section {
+            height: 400px;
+            width: 270px;
+            background-color: rgb(62, 224, 62);
+            text-align: center;
+            align-content: center;
+        }
+
+        .title {
+            width: 200px;
+            border-radius: 5px;
+        }
+
+        .comment {
+            height: 200px;
+            width: 200px;
+            text-overflow: auto;
+            resize: none;
+            border-radius: 5px;
+        }
+
+        .button {
+            width: 207px;
+            background-color: #1e8521;
+            /* 버튼 배경색 */
+            color: white;
+            /* 글자 색 */
+            padding: 5px 20px;
+            /* 패딩 */
+            border: none;
+            /* 테두리 없음 */
+            border-radius: 5px;
+            /* 테두리 반경 */
+            font-size: 16px;
+            /* 글자 크기 */
+            cursor: pointer;
+            /* 커서 모양 변경 */
+            transition: background-color 0.3s;
+            /* 배경색 변화 효과 */
+        }
+
+        .aside {
+            height: 400px;
+            width: 730px;
+            background-color: rgb(24, 158, 58);
+            margin-top: -400px;
+            margin-left: 270px;
+        }
+
+        .article {
+            height: 350px;
+            width: 730px;
+            align-content: center;
+            background-color: rgb(35, 199, 104);
+            margin-top: -400px;
+            margin-left: 270px;
+        }
+
+        .todo-item {
+            margin: 15px;
+            padding: 5px;
+            border: 1px solid #07b87d;
+            border-radius: 5px;
+            background-color: #ffffff;
+            overflow: auto;
+        }
+
+        .delete-button {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--헤더-->
+    <header class="header">
+        <h1 class="h1">To-Do List</h1>
+    </header>
+
+    <section class="section">
+        <div>
+            <!--타이틀-->
+            <h3>Title</h3>
+            <input class="title" type="text" id="todoTitle">
+            <!--코멘트-->
+            <h3>Comment</h3>
+            <textarea class="comment" name="comment" id="todoComment"></textarea>
+            <!--입력버튼-->
+            <input class="button" type="submit" value="입력" id="button">
+            <br><br>
+        </div>
+    </section>
+
+    <!--레이아웃1-->
+    <aside class="aside">
+
+    </aside>
+    <!--레이아웃2-->
+    <article class="article">
+        <div id="todoList"></div>
+    </article>
+
+    <script>
+        const $button = document.getElementById('button');
+        const $todoTitle = document.getElementById('todoTitle');
+        const $todoComment = document.getElementById('todoComment');
+        const $todoList = document.getElementById('todoList');
+
+        $button.onclick = function () {
+            const title = $todoTitle.value;
+            const comment = $todoComment.value;
+
+            if (title && comment) {
+                const todoItem = document.createElement('div');
+                todoItem.className = 'todo-item';
+                todoItem.innerHTML = `
+                    <div>
+                        <strong>${title}</strong><br>${comment}
+                    </div>
+                    <button class="delete-button">삭제</button>
+                `;
+
+                // 삭제 버튼 클릭 시 해당 항목 삭제
+                const deleteButton = todoItem.querySelector('.delete-button');
+                deleteButton.onclick = function() {
+                    $todoList.removeChild(todoItem);
+                };
+
+                $todoList.appendChild(todoItem);
+
+                // 입력 필드 초기화
+                $todoTitle.value = '';
+                $todoComment.value = '';
+            } else {
+                alert('제목과 코멘트를 모두 입력하세요.');
+            }
+        };
+    </script>
+</body>
+</html>
